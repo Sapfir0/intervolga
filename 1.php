@@ -6,15 +6,15 @@
 <body>
 
 <?php 
-$imageFilename = "./image/img.jpg";
+$imageFilename = "./image/image.png";
 $desiredWidth = 200; // изображение сожмется до 200 по ширине, а по высоте пропорционально
-$oldImage = imagecreatefromjpeg($imageFilename);
+$oldImage = imagecreatefrompng($imageFilename);
 [$width, $height] = getimagesize($imageFilename);
 $compressionRatio = $width/$desiredWidth; 
 $newImageWidth = $width / $compressionRatio; 
 $newImageHeight = $height / $compressionRatio; 
 $newImage = imagecreatetruecolor($newImageWidth, $newImageHeight); 
-$newImageFilename  = "./image/img_small.jpg";
+$newImageFilename  = "./image/image_small.png";
 imagecopyresampled($newImage, $oldImage, 0, 0, 0, 0, $newImageWidth, $newImageHeight, $width, $height);
 
 $imageQuality = 100;
